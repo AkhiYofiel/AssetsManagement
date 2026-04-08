@@ -1,0 +1,115 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background: radial-gradient(circle at 5% 10%, #ecf4ff 0, #f8fbff 45%, #f4f9ff 100%);
+	color: #1f2937;
+}
+
+.feature {
+	background: #fff;
+	border: 1px solid #d5e2f2;
+	border-radius: 0.85rem;
+	padding: 1rem;
+	box-shadow: 0 8px 28px -22px #133a691f;
+}
+
+.feature h2 {
+	margin: 0 0 0.35rem;
+	color: #1f3a5f;
+}
+
+.feature-intro {
+	margin: 0 0 1rem;
+	color: #5f6f86;
+}
+
+.entity-form {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 0.8rem;
+	margin-bottom: 0.8rem;
+}
+
+.entity-form .full {
+	grid-column: 1 / -1;
+}
+
+.entity-form label {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: #304766;
+}
+
+.entity-form input,
+.entity-form select,
+.entity-form button {
+	font: inherit;
+}
+
+.entity-form input,
+.entity-form select {
+	border: 1px solid #c5d6ed;
+	border-radius: 0.45rem;
+	padding: 0.55rem 0.6rem;
+	background: #fcfdff;
+}
+
+.entity-form button {
+	align-self: end;
+	border: 0;
+	border-radius: 0.45rem;
+	padding: 0.62rem 0.9rem;
+	font-weight: 700;
+	color: #fff;
+	background: #2e6fb8;
+	cursor: pointer;
+}
+
+.entity-form button:disabled {
+	opacity: 0.65;
+	cursor: not-allowed;
+}
+
+.feedback {
+	margin: 0 0 0.8rem;
+	color: #0d6832;
+	font-weight: 600;
+}
+
+.error {
+	margin: 0 0 0.8rem;
+	color: #a91b2b;
+	font-weight: 600;
+}
+
+.table-wrap {
+	overflow-x: auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	min-width: 640px;
+}
+
+th,
+td {
+	border-bottom: 1px solid #e3edf9;
+	text-align: left;
+	padding: 0.65rem 0.5rem;
+	font-size: 0.92rem;
+}
+
+th {
+	color: #304766;
+	background: #f3f8ff;
+}

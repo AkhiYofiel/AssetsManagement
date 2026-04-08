@@ -1,0 +1,84 @@
+<section class="feature">
+	<h2>Assets</h2>
+	<p class="feature-intro">Create and view physical assets with owner, status, and warranty card details.</p>
+
+	<form class="entity-form" [formGroup]="assetForm" (ngSubmit)="createAsset()">
+		<label>
+			Name
+			<input type="text" formControlName="name" placeholder="Laptop" />
+		</label>
+
+		<label>
+			Serial Number
+			<input type="text" formControlName="serialNumber" placeholder="SN-001-ABC" />
+		</label>
+
+		<label>
+			Status
+			<select formControlName="statusId">
+				<option [value]="0">Select status</option>
+				@for (status of statuses(); track status.id ?? status.name) {
+					<option [value]="status.id ?? 0">{{ status.name }}</option>
+				}
+			</select>
+		</label>
+
+		<label>
+			Employee
+			<select formControlName="employeeId">
+				<option [value]="0">Select employee</option>
+				@for (employee of employees(); track employee.id ?? employee.email) {
+					<option [value]="employee.id ?? 0">{{ employee.firstName }} {{ employee.lastName }}</option>
+				}
+			</select>
+		</label>
+
+		<label>
+			Warranty Provider
+			<input type="text" formControlName="provider" placeholder="Provider Inc." />
+		</label>
+
+		<label>
+			Warranty Start Date
+			<input type="date" formControlName="startDate" />
+		</label>
+
+		<label>
+			Warranty End Date
+			<input type="date" formControlName="endDate" />
+		</label>
+
+		<button class="full" type="submit" [disabled]="assetForm.invalid || isSubmitting()">Create Asset</button>
+	</form>
+
+	@if (feedback()) {
+		<p class="feedback">{{ feedback() }}</p>
+	}
+
+	@if (errorMessage()) {
+		<p class="error">{{ errorMessage() }}</p>
+	}
+
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr>          
+					<th>Name</th>
+					<th>Serial Number</th> 
+					<th>Employee</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				@for (asset of assets(); track asset.Id) {
+					<tr>
+						<td>{{ asset.name }}</td>
+						<td>{{ asset.serialNumber }}</td>                        
+						<td>{{ asset.employeeName }}</td>
+						<td>{{ asset.statusName }}</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</section>

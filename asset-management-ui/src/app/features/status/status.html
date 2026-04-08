@@ -1,0 +1,38 @@
+<section class="feature">
+	<h2>Status</h2>
+	<p class="feature-intro">Maintain status values used by the asset records.</p>
+
+	<form class="entity-form" [formGroup]="statusForm" (ngSubmit)="createStatus()">
+		<label>
+			Name
+			<input type="text" formControlName="name" placeholder="Assigned" />
+		</label>
+
+		<button type="submit" [disabled]="statusForm.invalid || isSubmitting()">Create Status</button>
+	</form>
+
+	@if (feedback()) {
+		<p class="feedback">{{ feedback() }}</p>
+	}
+
+	@if (errorMessage()) {
+		<p class="error">{{ errorMessage() }}</p>
+	}
+
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				@for (status of statuses(); track status.id ?? status.name) {
+					<tr>
+						<td>{{ status.name }}</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</section>

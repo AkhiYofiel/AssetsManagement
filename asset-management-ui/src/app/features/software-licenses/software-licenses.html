@@ -1,0 +1,52 @@
+<section class="feature">
+	<h2>Software Licenses</h2>
+	<p class="feature-intro">Create and monitor software licenses and expiration dates.</p>
+
+	<form class="entity-form" [formGroup]="licenseForm" (ngSubmit)="createLicense()">
+		<label>
+			Name
+			<input type="text" formControlName="name" placeholder="Office Suite" />
+		</label>
+
+		<label>
+			License Key
+			<input type="text" formControlName="licenseKey" placeholder="XXXX-YYYY-ZZZZ" />
+		</label>
+
+		<label>
+			Expiration Date
+			<input type="date" formControlName="expirationDate" />
+		</label>
+
+		<button class="full" type="submit" [disabled]="licenseForm.invalid || isSubmitting()">Create License</button>
+	</form>
+
+	@if (feedback()) {
+		<p class="feedback">{{ feedback() }}</p>
+	}
+
+	@if (errorMessage()) {
+		<p class="error">{{ errorMessage() }}</p>
+	}
+
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>License Key</th>
+					<th>Expiration Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				@for (license of licenses(); track license.id ?? license.licenseKey) {
+					<tr>
+						<td>{{ license.name }}</td>
+						<td>{{ license.licenseKey }}</td>
+						<td>{{ license.expirationDate }}</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</section>

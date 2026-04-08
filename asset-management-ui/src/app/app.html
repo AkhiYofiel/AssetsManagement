@@ -1,0 +1,19 @@
+<div class="app-shell">
+  <header class="app-header">
+    <div>
+      <h1>Asset Management</h1>
+      <p>Track assets, owners, software licenses, and lifecycle status.</p>
+    </div>
+
+    <nav aria-label="Main navigation" class="app-nav">
+      <a routerLink="/assets" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Assets</a>
+      <a routerLink="/employees" routerLinkActive="active">Employees</a>
+      <a routerLink="/software-licenses" routerLinkActive="active">Software Licenses</a>
+      <a routerLink="/status" routerLinkActive="active">Status</a>
+    </nav>
+  </header>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>

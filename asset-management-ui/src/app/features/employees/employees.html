@@ -1,0 +1,52 @@
+<section class="feature">
+	<h2>Employees</h2>
+	<p class="feature-intro">Register employees that can be assigned to assets.</p>
+
+	<form class="entity-form" [formGroup]="employeeForm" (ngSubmit)="createEmployee()">
+		<label>
+			First Name
+			<input type="text" formControlName="firstName" placeholder="John" />
+		</label>
+
+		<label>
+			Last Name
+			<input type="text" formControlName="lastName" placeholder="Doe" />
+		</label>
+
+		<label>
+			Email
+			<input type="email" formControlName="email" placeholder="john.doe@company.com" />
+		</label>
+
+		<button class="full" type="submit" [disabled]="employeeForm.invalid || isSubmitting()">Create Employee</button>
+	</form>
+
+	@if (feedback()) {
+		<p class="feedback">{{ feedback() }}</p>
+	}
+
+	@if (errorMessage()) {
+		<p class="error">{{ errorMessage() }}</p>
+	}
+
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				@for (employee of employees(); track employee.id ?? employee.email) {
+					<tr>
+						<td>{{ employee.firstName }}</td>
+						<td>{{ employee.lastName }}</td>
+						<td>{{ employee.email }}</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</section>
